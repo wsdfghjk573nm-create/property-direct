@@ -1,0 +1,26 @@
+# Render Blueprint for Property Direct
+# Render reads this file when you create a New > Blueprint / Web Service from
+# the GitHub repo. Plans and disks: the free plan has NO persistent disk, so
+# the SQLite database and uploaded photos reset on restart/redeploy — fine
+# for a demo, not for real business data. For real use, switch plan to a paid
+# instance and add a persistent disk (see README "Deploy online").
+services:
+  - type: web
+    name: property-direct
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: BRAND_NAME
+        value: Property Direct
+      - key: BRAND_TAGLINE
+        value: Buy Direct. Sell Direct. No Middlemen.
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
