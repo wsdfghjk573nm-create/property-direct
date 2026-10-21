@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<rect width="1200" height="800" fill="#0f766e"/>
+<rect y="560" width="1200" height="240" fill="#14532d" opacity="0.35"/>
+<polygon points="350,560 600,300 850,560" fill="#111827" opacity="0.85"/>
+<rect x="420" y="430" width="360" height="180" fill="#f8fafc"/>
+<rect x="560" y="500" width="80" height="110" fill="#334155"/>
+<circle cx="850" cy="130" r="70" fill="#fde68a"/>
+<text x="600" y="700" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="white" text-anchor="middle">Villa</text>
+<text x="600" y="750" font-family="Arial, sans-serif" font-size="30" fill="white" text-anchor="middle">DEMO LISTING PHOTO</text>
+</svg>
