@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Direct — Buy Direct. Sell Direct. No Middlemen.</title>
+<meta name="description" content="Buy, sell and rent properties directly from owners. No brokers, no middlemen. This showcase page presents the Property Direct marketplace and its sample demo listings.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="#home" aria-label="Property Direct — Home">
+    <span class="logo-mark">⌂</span><span><span class="logo-name">Property Direct</span><small>Buy Direct. Sell Direct. No Middlemen.</small></span>
+  </a>
+  <nav class="mainnav" id="mainNav">
+    <a href="#home">Home</a>
+    <a href="#listings" data-preset-listing="sale">Buy</a>
+    <a href="#listings" data-preset-listing="rent">Rent</a>
+    <a href="#categories">Categories</a>
+    <a href="#how">How It Works</a>
+    <a href="#full-version">Full Version</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <h1>Find a property. Talk to the owner. <span>No middlemen.</span></h1>
+      <p>Buy Direct. Sell Direct. No Middlemen.</p>
+      <form id="heroSearch" class="hero-search">
+        <input id="heroText" type="text" placeholder="Search by city, locality or keyword…">
+        <select id="heroListing">
+          <option value="">Buy or Rent</option>
+          <option value="sale">Buy</option>
+          <option value="rent">Rent</option>
+        </select>
+        <button type="submit" class="btn primary">Search</button>
+      </form>
+      <div class="hero-ctas">
+        <a class="btn big light" href="#listings">Find Your Dream Property</a>
+        <a class="btn big light" href="#how">Post Your Property — How It Works</a>
+      </div>
+      <p class="hero-note">This is the public showcase page for Property Direct. The listings below are clearly marked sample DEMO listings — see the “Full Version” section for the complete working marketplace.</p>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <h2 class="section-title" id="categories">Browse by Category</h2>
+  <div class="categories">
+    <button class="cat" data-category="Residential"><span class="ic">🏠</span><b>Residential</b><span class="muted">Houses, flats, apartments, villas</span></button>
+    <button class="cat" data-category="Commercial"><span class="ic">🏢</span><b>Commercial</b><span class="muted">Shops, offices, commercial buildings</span></button>
+    <button class="cat" data-category="Plots"><span class="ic">🗺️</span><b>Plots</b><span class="muted">Residential and investment plots</span></button>
+    <button class="cat" data-category="Agricultural Land"><span class="ic">🌾</span><b>Agricultural Land</b><span class="muted">Farmland and village land</span></button>
+  </div>
+
+  <!-- LISTINGS -->
+  <h2 class="section-title" id="listings">Demo Listings</h2>
+  <p class="demo-note">⚠️ These are <strong>sample / demo listings</strong> shown so you can see how Property Direct works. They are not real properties for sale or rent. In the full version, real owners post real properties.</p>
+
+  <form id="filterForm" class="filters">
+    <input id="fText" type="text" placeholder="Search city, locality, keyword…">
+    <select id="fCity"><option value="">All Cities</option></select>
+    <select id="fListing">
+      <option value="">Buy or Rent</option>
+      <option value="sale">For Sale</option>
+      <option value="rent">For Rent</option>
+    </select>
+    <select id="fType"><option value="">All Types</option></select>
+    <select id="fCategory">
+      <option value="">All Categories</option>
+      <option>Residential</option>
+      <option>Commercial</option>
+      <option>Plots</option>
+      <option>Agricultural Land</option>
+    </select>
+    <select id="fMaxBudget">
+      <option value="">Any Budget</option>
+      <option value="25000">Up to ₹25,000</option>
+      <option value="50000">Up to ₹50,000</option>
+      <option value="2000000">Up to ₹20 Lakh</option>
+      <option value="4000000">Up to ₹40 Lakh</option>
+      <option value="5000000">Up to ₹50 Lakh</option>
+      <option value="10000000">Up to ₹1 Crore</option>
+    </select>
+    <select id="fSort">
+      <option value="featured">Sort: Featured</option>
+      <option value="price_asc">Price: Low to High</option>
+      <option value="price_desc">Price: High to Low</option>
+      <option value="area_desc">Area: Largest First</option>
+    </select>
+    <button class="btn" type="button" id="clearFilters">Clear Filters</button>
+  </form>
+  <p class="muted" id="searchCount"></p>
+  <div class="cards" id="listingGrid"></div>
+
+  <!-- HOW IT WORKS -->
+  <h2 class="section-title" id="how">How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">1</span>
+      <h3>Owners post directly</h3>
+      <p>Property owners list their own house, flat, shop, plot or land — with photos, price and details. No agent or broker is needed to post.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <h3>Buyers search and compare</h3>
+      <p>Buyers and tenants search by city, budget and type, save favourites and compare properties side by side — like the demo filters on this page.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <h3>Talk to the owner directly</h3>
+      <p>Interested in a property? In the full version you message, call or schedule a visit with the owner himself — through the site, never through a broker.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <h3>No broker, no commission</h3>
+      <p>The deal happens directly between owner and buyer. Property Direct never charges a broker commission, and optional paid services always show their price clearly before you choose them.</p>
+    </div>
+  </div>
+
+  <!-- TRUST & SAFETY -->
+  <div class="trust-band">
+    <h2>Stay safe — direct dealing, done right</h2>
+    <ul>
+      <li>Always verify ownership documents (registry papers, ID) yourself before paying anything.</li>
+      <li>Never pay an advance to an unknown account. Visit the property first.</li>
+      <li>A property is only marked “Verified” after an admin has actually completed a document check — otherwise it is not verified.</li>
+      <li>Listings marked DEMO — like all the listings on this page — are sample data, not real offers.</li>
+    </ul>
+  </div>
+
+  <!-- FULL VERSION -->
+  <div class="full-band" id="full-version">
+    <h2>The Full Version</h2>
+    <p>This page is a lightweight showcase that runs entirely in your browser, so anyone can see the Property Direct idea, design and demo listings. The <strong>complete marketplace</strong> — owner and buyer accounts, posting properties with photo uploads, search over the real database, in-app messaging, visit scheduling, favourites and an admin dashboard — needs a running server and database, so it cannot live on this simple page.</p>
+    <p>The full working source code is free to read and download on GitHub. When it is deployed on a server, the exact same design you see here becomes the live marketplace where real owners post real properties.</p>
+    <p><a class="btn primary big" href="https://github.com/wsdfghjk573nm-create/property-direct">View the Full Source Code on GitHub</a></p>
+  </div>
+</main>
+
+<footer>
+  <p><strong>Property Direct</strong> · Buy Direct. Sell Direct. No Middlemen.</p>
+  <p class="muted">Direct owner-to-buyer marketplace. Always verify property documents yourself before paying. Listings marked DEMO are sample data.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
