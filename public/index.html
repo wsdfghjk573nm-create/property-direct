@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Direct — Buy Direct. Sell Direct. No Middlemen.</title>
+<meta name="description" content="Buy, sell and rent properties directly from owners. No brokers, no middlemen.">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="logo" data-nav="home" aria-label="Home">
+    <span class="logo-mark">⌂</span><span><span id="brandName">Property Direct</span><small id="brandTagline">Buy Direct. Sell Direct. No Middlemen.</small></span>
+  </button>
+  <nav class="mainnav" id="mainNav">
+    <button data-nav="home">Home</button>
+    <button data-nav="buy">Buy Property</button>
+    <button data-nav="sell">Sell Property</button>
+    <button data-nav="rent">Rent Property</button>
+    <button data-nav="favorites">Favorites</button>
+    <button data-nav="assistant">AI Assistant</button>
+    <button data-nav="pricing">Pricing</button>
+    <button data-nav="dashboard" id="navDashboard" class="hidden">Dashboard</button>
+    <button data-nav="admin" id="navAdmin" class="hidden">Admin</button>
+    <button data-nav="auth" id="navAuth">Login</button>
+    <button id="navLogout" class="hidden">Logout</button>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section id="view-home" class="view">
+    <div class="hero">
+      <div class="hero-inner">
+        <h1>Find a property. Talk to the owner. <span>No middlemen.</span></h1>
+        <p id="heroTagline">Buy Direct. Sell Direct. No Middlemen.</p>
+        <form id="heroSearch" class="hero-search">
+          <input id="heroText" type="text" placeholder="Search by locality, project or keyword…">
+          <select id="heroCity"><option value="">All Cities</option></select>
+          <select id="heroType"><option value="">All Types</option></select>
+          <select id="heroListing"><option value="">Buy or Rent</option><option value="sale">Buy</option><option value="rent">Rent</option></select>
+          <button type="submit" class="btn primary">Search</button>
+        </form>
+        <div class="hero-ctas">
+          <button class="btn big primary" data-nav="sell">Post Your Property for Free</button>
+          <button class="btn big light" data-nav="buy">Find Your Dream Property</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Browse by Category</h2>
+    <div class="categories" id="categoryGrid"></div>
+
+    <h2 class="section-title">Featured Properties</h2>
+    <div class="cards" id="featuredGrid"><p class="muted">Loading…</p></div>
+
+    <h2 class="section-title">Recently Listed</h2>
+    <div class="cards" id="recentGrid"><p class="muted">Loading…</p></div>
+
+    <div class="trust-band">
+      <h2>Stay safe — direct dealing, done right</h2>
+      <ul>
+        <li>Always verify ownership documents (registry papers, ID) yourself before paying anything.</li>
+        <li>Never pay an advance to an unknown account. Visit the property first.</li>
+        <li>A property is only marked “Verified” here after an admin has actually completed a document check — otherwise it is not verified.</li>
+        <li>Report any suspicious listing from its page — our admin team reviews reports.</li>
+      </ul>
+      <button class="btn light" data-nav="assistant">Ask the AI Property Assistant</button>
+    </div>
+
+    <div class="support-band">
+      <h2>Contact Support</h2>
+      <form id="supportForm" class="support-form">
+        <input id="supName" required placeholder="Your name">
+        <input id="supEmail" type="email" required placeholder="Your email">
+        <input id="supMsg" required placeholder="Your message">
+        <button class="btn primary" type="submit">Send Message</button>
+      </form>
+      <p class="muted" id="supportResult"></p>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <section id="view-search" class="view hidden">
+    <h1 id="searchTitle">Search Properties</h1>
+    <form id="filterForm" class="filters">
+      <input id="fText" placeholder="Locality / keyword">
+      <select id="fCity"><option value="">All Cities</option></select>
+      <select id="fType"><option value="">All Types</option></select>
+      <select id="fListing"><option value="">Buy or Rent</option><option value="sale">For Sale</option><option value="rent">For Rent</option></select>
+      <select id="fCategory"><option value="">All Categories</option></select>
+      <input id="fMinPrice" type="number" min="0" placeholder="Min budget (₹)">
+      <input id="fMaxPrice" type="number" min="0" placeholder="Max budget (₹)">
+      <select id="fBedrooms"><option value="">Any BHK</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+      <input id="fMinArea" type="number" min="0" placeholder="Min area">
+      <input id="fMaxArea" type="number" min="0" placeholder="Max area">
+      <select id="fFurnishing"><option value="">Any Furnishing</option></select>
+      <select id="fSort"><option value="newest">Newest First</option><option value="price_asc">Price: Low to High</option><option value="price_desc">Price: High to Low</option></select>
+      <button class="btn primary" type="submit">Apply Filters</button>
+      <button class="btn" type="button" id="clearFilters">Clear</button>
+    </form>
+    <p class="muted" id="searchCount"></p>
+    <div class="cards" id="searchGrid"></div>
+  </section>
+
+  <!-- DETAIL -->
+  <section id="view-detail" class="view hidden"><div id="detailWrap"></div></section>
+
+  <!-- POST / EDIT -->
+  <section id="view-post" class="view hidden">
+    <h1 id="postTitle">Post Your Property for Free</h1>
+    <p class="muted">New listings go to admin moderation first and appear in search after approval. Fields marked * are required.</p>
+    <form id="postForm" class="form-grid">
+      <label>Property Title *<input id="pTitle" required maxlength="140"></label>
+      <label>Property Type *<select id="pType" required></select></label>
+      <label>Listing Type *<select id="pListing"><option value="sale">For Sale</option><option value="rent">For Rent</option></select></label>
+      <label>Expected Price / Monthly Rent (₹) *<input id="pPrice" type="number" min="1" required></label>
+      <label>State *<input id="pState" required></label>
+      <label>City *<input id="pCity" required></label>
+      <label>Locality<input id="pLocality"></label>
+      <label>Full Address<input id="pAddress"></label>
+      <label>Area<input id="pArea" type="number" min="0" step="any"></label>
+      <label>Area Unit<select id="pAreaUnit"><option value="sqft">sq ft</option><option value="sqyd">sq yards</option></select></label>
+      <label>Bedrooms (if applicable)<input id="pBedrooms" type="number" min="0"></label>
+      <label>Bathrooms (if applicable)<input id="pBathrooms" type="number" min="0"></label>
+      <label>Furnishing<select id="pFurnishing"></select></label>
+      <label>Parking<select id="pParking"></select></label>
+      <label>Availability<select id="pAvailability"><option value="available">Available</option><option value="unavailable">Unavailable</option><option value="sold">Sold</option><option value="rented">Rented</option></select></label>
+      <label>Video URL (optional)<input id="pVideoUrl" placeholder="https://…"></label>
+      <label class="full">Description<textarea id="pDesc" rows="4"></textarea></label>
+      <fieldset class="full"><legend>Amenities</legend><div id="pAmenities" class="checks"></div></fieldset>
+      <label>Photos (up to 8, JPG/PNG/WebP, 5 MB each)<input id="pPhotos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple></label>
+      <label>Property Video (MP4/WebM/MOV, max 50 MB)<input id="pVideo" type="file" accept="video/mp4,video/webm,video/quicktime"></label>
+      <label>Contact Person Name<input id="pContactName"></label>
+      <label>Contact Phone<input id="pContactPhone"></label>
+      <label>Contact WhatsApp<input id="pContactWhatsapp"></label>
+      <label>Contact Email<input id="pContactEmail" type="email"></label>
+      <label class="check"><input type="checkbox" id="pShowPhone"> Show my phone number publicly</label>
+      <label class="check"><input type="checkbox" id="pShowWhatsapp"> Show my WhatsApp publicly</label>
+      <label class="check"><input type="checkbox" id="pShowEmail" checked> Show my email publicly</label>
+      <p class="muted full">Privacy: contact details are shown only where you tick above. Buyers can always reach you through in-app messaging without seeing private details.</p>
+      <button class="btn primary big full" type="submit" id="postSubmit">Submit Property</button>
+      <p id="postResult" class="full"></p>
+    </form>
+  </section>
+
+  <!-- AUTH -->
+  <section id="view-auth" class="view hidden">
+    <div class="auth-box">
+      <h1 id="authTitle">Login</h1>
+      <form id="loginForm">
+        <label>Email<input id="lEmail" type="email" required></label>
+        <label>Password<input id="lPass" type="password" required></label>
+        <button class="btn primary big" type="submit">Login</button>
+        <p id="loginResult"></p>
+      </form>
+      <hr>
+      <h2>Create an account</h2>
+      <form id="registerForm">
+        <label>Full Name<input id="rName" required></label>
+        <label>Email<input id="rEmail" type="email" required></label>
+        <label>Phone<input id="rPhone"></label>
+        <label>Password (min 6 characters)<input id="rPass" type="password" required minlength="6"></label>
+        <label>I am a<select id="rRole"><option value="buyer">Buyer</option><option value="owner">Property Owner</option><option value="tenant">Tenant</option><option value="agent">Authorized Property Agent</option></select></label>
+        <p class="muted">One account does everything — the same account can buy, rent and list properties for sale.</p>
+        <button class="btn primary big" type="submit">Register</button>
+        <p id="registerResult"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAVORITES -->
+  <section id="view-favorites" class="view hidden">
+    <h1>My Favorites</h1>
+    <p class="muted">Tick 2–3 properties and compare them side by side.</p>
+    <div class="cards" id="favGrid"></div>
+    <button class="btn primary" id="compareBtn">Compare Selected</button>
+    <div id="compareWrap" class="compare-wrap"></div>
+  </section>
+
+  <!-- ASSISTANT -->
+  <section id="view-assistant" class="view hidden">
+    <h1>AI Property Assistant</h1>
+    <p class="muted">Ask in plain words — for example “Find a house in Jaipur under ₹50 lakh”, “Show me residential plots in Jalore”, “Find a shop for rent”, or “What is carpet area?”. Search runs on the live database of real approved listings; the assistant never invents a property.</p>
+    <form id="assistantForm" class="assistant-form">
+      <input id="assistantInput" placeholder="Type what you are looking for…" required>
+      <button class="btn primary" type="submit">Search</button>
+    </form>
+    <div id="assistantAnswer" class="assistant-answer"></div>
+    <div class="cards" id="assistantGrid"></div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="view-pricing" class="view hidden">
+    <h1>Plans &amp; Services</h1>
+    <p class="muted">Basic searching is always free for buyers. Sellers may request optional paid services below — prices are shown clearly, requests are saved for our team, and <strong>no payment is charged on this website</strong>. The platform never charges a broker commission.</p>
+    <div class="cards plans" id="planGrid"></div>
+    <div class="auth-box">
+      <h2>Request a service</h2>
+      <form id="promoForm">
+        <label>Plan<select id="promoPlan"></select></label>
+        <label>Your Property<select id="promoProperty"><option value="">— General / Premium plan (no single property) —</option></select></label>
+        <label>Note (optional)<input id="promoNote" placeholder="Anything we should know"></label>
+        <button class="btn primary" type="submit">Send Request (no payment taken)</button>
+        <p id="promoResult"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="view-dashboard" class="view hidden">
+    <h1>My Dashboard</h1>
+    <div class="tabs">
+      <button data-tab="listings" class="tab active">Seller: My Listings</button>
+      <button data-tab="inquiries" class="tab">Inquiries &amp; Messages</button>
+      <button data-tab="visits" class="tab">Visit Requests</button>
+      <button data-tab="alerts" class="tab">Notifications</button>
+      <button data-tab="profile" class="tab">Profile</button>
+    </div>
+    <div id="tab-listings" class="tabpane">
+      <p id="sellerStats" class="stats-line"></p>
+      <button class="btn primary" data-nav="sell">+ Post New Property</button>
+      <div class="cards" id="myGrid"></div>
+    </div>
+    <div id="tab-inquiries" class="tabpane hidden">
+      <div id="threadList"></div>
+      <div id="threadView" class="thread-view hidden">
+        <button class="btn" id="threadBack">← Back to conversations</button>
+        <div id="threadMessages" class="thread-messages"></div>
+        <form id="threadReply" class="assistant-form"><input id="threadReplyText" placeholder="Type your reply…" required><button class="btn primary">Send</button></form>
+      </div>
+    </div>
+    <div id="tab-visits" class="tabpane hidden"><div id="visitList"></div></div>
+    <div id="tab-alerts" class="tabpane hidden">
+      <button class="btn" id="markReadBtn">Mark all as read</button>
+      <div id="notifList"></div>
+    </div>
+    <div id="tab-profile" class="tabpane hidden">
+      <form id="profileForm" class="auth-box">
+        <label>Name<input id="profName"></label>
+        <label>Email (cannot change)<input id="profEmail" disabled></label>
+        <label>Phone<input id="profPhone"></label>
+        <label>WhatsApp<input id="profWhatsapp"></label>
+        <label>Account Type<select id="profRole"><option value="buyer">Buyer</option><option value="owner">Property Owner</option><option value="tenant">Tenant</option><option value="agent">Authorized Property Agent</option></select></label>
+        <button class="btn primary" type="submit">Save Profile</button>
+        <p id="profileResult"></p>
+      </form>
+      <h3>My service requests</h3>
+      <div id="myPromos"></div>
+      <h3>Recently viewed</h3>
+      <div class="cards" id="recentDashGrid"></div>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="view-admin" class="view hidden">
+    <h1>Admin Dashboard</h1>
+    <p id="adminStats" class="stats-line"></p>
+    <h2>Listing Review Queue</h2>
+    <div class="filters">
+      <select id="adminStatusFilter"><option value="">All statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select>
+      <button class="btn" id="adminRefresh">Refresh</button>
+    </div>
+    <div id="adminProps"></div>
+    <h2>Reports</h2><div id="adminReports"></div>
+    <h2>Users</h2><div id="adminUsers"></div>
+    <h2>Promotion / Service Requests</h2><div id="adminPromos"></div>
+    <h2>Support Messages</h2><div id="adminSupport"></div>
+  </section>
+</main>
+
+<footer>
+  <p><strong id="footBrand">Property Direct</strong> · <span id="footTagline">Buy Direct. Sell Direct. No Middlemen.</span></p>
+  <p class="muted">Direct owner-to-buyer marketplace. Always verify property documents yourself before paying. Listings marked DEMO are sample data.</p>
+</footer>
+
+<div id="toast" class="toast hidden"></div>
+<script src="/app.js"></script>
+</body>
+</html>
