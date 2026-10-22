@@ -17,6 +17,7 @@
     <a href="#listings" data-preset-listing="sale">Buy</a>
     <a href="#listings" data-preset-listing="rent">Rent</a>
     <a href="#categories">Categories</a>
+    <a href="#sell">Sell</a>
     <a href="#how">How It Works</a>
     <a href="#full-version">Full Version</a>
   </nav>
@@ -40,7 +41,7 @@
       </form>
       <div class="hero-ctas">
         <a class="btn big light" href="#listings">Find Your Dream Property</a>
-        <a class="btn big light" href="#how">Post Your Property — How It Works</a>
+        <a class="btn big primary" href="#sell">Sell / Post Your Property</a>
       </div>
       <p class="hero-note">This is the public showcase page for Property Direct. The listings below are clearly marked sample DEMO listings — see the “Full Version” section for the complete working marketplace.</p>
     </div>
@@ -95,6 +96,87 @@
   <p class="muted" id="searchCount"></p>
   <div class="cards" id="listingGrid"></div>
 
+  <!-- SELL / POST PROPERTY -->
+  <section class="sell-band" id="sell">
+    <h2>Sell / Post Your Property</h2>
+    <p>Are you the owner? Send your property details here. The details come to Property Direct by email for review and owner contact — submitting this form does <strong>not</strong> publish the property automatically on this page.</p>
+    <form id="sellForm" class="sell-form" enctype="multipart/form-data" novalidate>
+      <label>Your full name *
+        <input name="seller_name" type="text" autocomplete="name" required>
+      </label>
+      <label>Mobile number *
+        <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
+      </label>
+      <label>Email address
+        <input name="email" type="email" autocomplete="email">
+      </label>
+      <label>I want to *
+        <select name="listing_type" required>
+          <option value="sale">Sell this property</option>
+          <option value="rent">Rent out this property</option>
+        </select>
+      </label>
+      <label>Property type *
+        <select name="property_type" required>
+          <option>House</option>
+          <option>Flat</option>
+          <option>Apartment</option>
+          <option>Villa</option>
+          <option>Shop</option>
+          <option>Office</option>
+          <option>Plot</option>
+          <option>Agricultural Land</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>Expected price (₹) *
+        <input name="price_inr" type="number" min="1" step="1" inputmode="numeric" required>
+      </label>
+      <label>City *
+        <input name="city" type="text" required>
+      </label>
+      <label>Locality / Area
+        <input name="locality" type="text">
+      </label>
+      <label>State
+        <input name="state" type="text">
+      </label>
+      <label>Built-up / plot area (sq ft)
+        <input name="area_sqft" type="number" min="1" step="1" inputmode="numeric">
+      </label>
+      <label>Bedrooms
+        <input name="bedrooms" type="number" min="0" step="1" inputmode="numeric">
+      </label>
+      <label>Bathrooms
+        <input name="bathrooms" type="number" min="0" step="1" inputmode="numeric">
+      </label>
+      <label>Furnishing
+        <select name="furnishing">
+          <option>Not Applicable</option>
+          <option>Unfurnished</option>
+          <option>Semi-Furnished</option>
+          <option>Fully Furnished</option>
+        </select>
+      </label>
+      <label>Property photo (optional, max 10 MB)
+        <input name="attachment" type="file" accept="image/*">
+      </label>
+      <label class="wide">Property details *
+        <textarea name="description" rows="5" required placeholder="Location, facing, floor, nearby places, availability, and anything a buyer should know."></textarea>
+      </label>
+      <label class="wide check-line">
+        <input name="owner_confirmation" type="checkbox" required>
+        <span>I confirm that I am the owner or I am authorised by the owner to submit this property. *</span>
+      </label>
+      <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="wide sell-actions">
+        <button class="btn primary big" type="submit" id="sellSubmitBtn">Submit Property Details</button>
+        <p class="sell-status" id="sellFormStatus" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+    <p class="muted">Please do not send passwords, OTPs, bank details, or identity-document copies through this form.</p>
+  </section>
+
   <!-- HOW IT WORKS -->
   <h2 class="section-title" id="how">How It Works</h2>
   <div class="steps">
@@ -134,7 +216,7 @@
   <!-- FULL VERSION -->
   <div class="full-band" id="full-version">
     <h2>The Full Version</h2>
-    <p>This page is a lightweight showcase that runs entirely in your browser, so anyone can see the Property Direct idea, design and demo listings. The <strong>complete marketplace</strong> — owner and buyer accounts, posting properties with photo uploads, search over the real database, in-app messaging, visit scheduling, favourites and an admin dashboard — needs a running server and database, so it cannot live on this simple page.</p>
+    <p>This page is a lightweight showcase that runs entirely in your browser, so anyone can see the Property Direct idea, design and demo listings. Owners can send property details through the Sell form above and they arrive by email for review. The <strong>complete marketplace</strong> — owner and buyer accounts, automatic publishing after posting, search over the real database, in-app messaging, visit scheduling, favourites and an admin dashboard — needs a running server and database, so it cannot live on this simple page.</p>
     <p>The full working source code is free to read and download on GitHub. When it is deployed on a server, the exact same design you see here becomes the live marketplace where real owners post real properties.</p>
     <p><a class="btn primary big" href="https://github.com/wsdfghjk573nm-create/property-direct">View the Full Source Code on GitHub</a></p>
   </div>
@@ -146,5 +228,6 @@
 </footer>
 
 <script src="app.js"></script>
+<script src="sell-form.js"></script>
 </body>
 </html>
