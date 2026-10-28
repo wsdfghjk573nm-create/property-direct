@@ -18,6 +18,7 @@
     <a href="#listings" data-preset-listing="rent">Rent</a>
     <a href="#categories">Categories</a>
     <a href="#sell">Sell</a>
+    <a href="#requirement">Post Requirement</a>
     <a href="#how">How It Works</a>
     <a href="#full-version">Full Version</a>
   </nav>
@@ -42,6 +43,7 @@
       <div class="hero-ctas">
         <a class="btn big light" href="#listings">Find Your Dream Property</a>
         <a class="btn big primary" href="#sell">Sell / Post Your Property</a>
+        <a class="btn big light" href="#requirement">Looking to Buy / Rent</a>
       </div>
       <p class="hero-note">This is the public showcase page for Property Direct. The listings below are clearly marked sample DEMO listings — see the “Full Version” section for the complete working marketplace.</p>
     </div>
@@ -175,6 +177,81 @@
       </div>
     </form>
     <p class="muted">Please do not send passwords, OTPs, bank details, or identity-document copies through this form.</p>
+    <p>Know an owner who wants to sell or rent out a property?
+      <a class="btn" href="https://wa.me/?text=Selling%20or%20renting%20out%20your%20property%3F%20Post%20it%20for%20FREE%20on%20Property%20Direct%20%E2%80%94%20no%20broker%2C%20no%20commission.%20Just%20fill%20the%202-minute%20form%3A%20https%3A%2F%2Fwsdfghjk573nm-create.github.io%2Fproperty-direct%2F%23sell" target="_blank" rel="noopener">Share on WhatsApp</a>
+    </p>
+  </section>
+
+  <!-- POST YOUR REQUIREMENT (BUYERS / TENANTS) -->
+  <section class="sell-band" id="requirement">
+    <h2>Looking to Buy or Rent? Post Your Requirement</h2>
+    <p>Tell us what you are looking for. Your requirement comes to Property Direct by email, and we will contact you if an owner submits a matching property. Submitting this form does <strong>not</strong> create an account and does <strong>not</strong> guarantee a property — it simply puts your requirement on our list, free of charge.</p>
+    <form id="buyerForm" class="sell-form" novalidate>
+      <label>Your full name *
+        <input name="buyer_name" type="text" autocomplete="name" required>
+      </label>
+      <label>Mobile number *
+        <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
+      </label>
+      <label>Email address
+        <input name="email" type="email" autocomplete="email">
+      </label>
+      <label>I want to *
+        <select name="need_type" required>
+          <option value="buy">Buy a property</option>
+          <option value="rent">Rent a property</option>
+        </select>
+      </label>
+      <label>Property type *
+        <select name="property_type" required>
+          <option>House</option>
+          <option>Flat</option>
+          <option>Apartment</option>
+          <option>Villa</option>
+          <option>Shop</option>
+          <option>Office</option>
+          <option>Plot</option>
+          <option>Agricultural Land</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>City *
+        <input name="city" type="text" required>
+      </label>
+      <label>Preferred locality / area
+        <input name="locality" type="text">
+      </label>
+      <label>Maximum budget (₹) *
+        <input name="budget_max_inr" type="number" min="1" step="1" inputmode="numeric" required>
+      </label>
+      <label>Bedrooms needed
+        <input name="bedrooms" type="number" min="0" step="1" inputmode="numeric">
+      </label>
+      <label>When do you need it?
+        <select name="timeline">
+          <option>Immediately</option>
+          <option>Within 1 month</option>
+          <option>Within 1–3 months</option>
+          <option>Just exploring</option>
+        </select>
+      </label>
+      <label class="wide">Anything else we should know?
+        <textarea name="notes" rows="4" placeholder="Floor preference, furnishing, parking, nearby school/office, etc."></textarea>
+      </label>
+      <label class="wide check-line">
+        <input name="contact_confirmation" type="checkbox" required>
+        <span>I confirm these are my own details and Property Direct may contact me about my requirement. *</span>
+      </label>
+      <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="wide sell-actions">
+        <button class="btn primary big" type="submit" id="buyerSubmitBtn">Submit My Requirement</button>
+        <p class="sell-status" id="buyerFormStatus" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+    <p class="muted">Please do not send passwords, OTPs, bank details, or identity-document copies through this form.</p>
+    <p>Know someone who is house-hunting?
+      <a class="btn" href="https://wa.me/?text=Looking%20for%20a%20house%2C%20flat%2C%20shop%20or%20plot%3F%20Post%20your%20requirement%20FREE%20on%20Property%20Direct%20%E2%80%94%20owners%20contact%20you%20directly%2C%20no%20broker%3A%20https%3A%2F%2Fwsdfghjk573nm-create.github.io%2Fproperty-direct%2F%23requirement" target="_blank" rel="noopener">Share on WhatsApp</a>
+    </p>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -229,5 +306,6 @@
 
 <script src="app.js"></script>
 <script src="sell-form.js"></script>
+<script src="buyer-form.js"></script>
 </body>
 </html>
